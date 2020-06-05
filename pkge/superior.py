@@ -6,7 +6,7 @@ alpha = 0.1
 gamma = 0.6
 epsilon = 0.1
 
-games2Train = 999999
+games2Train = 100000
 
 env = [0,0,0,0,0,0,0,0,0]
 qTable = np.zeros([19683,9])
@@ -25,8 +25,10 @@ def runTheGame():
         env[fucku] = 2
         if getWin(env, 1):
             print("1 won")
+            break
         if getWin(env, 2):
             print("2 won")
+            break
 
 
 
@@ -86,6 +88,7 @@ def getWin(array,player):
         if array[row[0]] == array[row[1]] == array[row[2]]:
             if array[row[0]] == player:
                 return True
+    return False
 
 
 def ai_move(array,player):

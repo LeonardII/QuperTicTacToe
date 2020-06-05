@@ -127,27 +127,3 @@ def next_turn(turn):
         return player1
 
         
-def main():
-    turn = player1
-    board = new_board()
-    display_board(board)
-
-    while not winner(board):
-        if turn == player2:
-            move = human_move(board, player2)
-            board[move] = player2
-        else:
-            import superior
-            move = ai_move(board, player1)
-            board[move] = player1
-            display_board(board)
-        
-        turn = next_turn(turn)
-
-    display_board(board)
-    the_winner = winner(board)
-    print("winner: ", the_winner)
-
-# start the program
-main()
-input("\n\nPress the enter key to quit.")
