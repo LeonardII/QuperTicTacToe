@@ -23,6 +23,10 @@ def runTheGame():
             print(f'{env[x*3]} {env[x*3+1]} {env[x*3+2]}\n')
         fucku = int(input("Where do you go looser? "))
         env[fucku] = 2
+        if getWin(env, 1):
+            print("1 won")
+        if getWin(env, 2):
+            print("2 won")
 
 
 
@@ -69,7 +73,7 @@ def ai_train():
     pass
 
 
-def getWin(array,a):
+def getWin(array,player):
     WAYS_TO_WIN = ((0, 1, 2),
                    (3, 4, 5),
                    (6, 7, 8),
@@ -98,9 +102,10 @@ for i in range(19683):
         if array[x] != 0:
             reward = -10
         else:
-            if getWin(array,x):
+            array[x] = player
+            if getWin(array, player):
                 reward = 20
-        aList.append([1,getNextState(array,x),reward,reward > 0])
+        aList.append([1,getState(array),reward,reward > 0])
     rTable.append(aList)
 
 #START
@@ -132,7 +137,8 @@ for i in range(1, games2Train):
     if(i % 929 == 0):
         print(f'Loading: {round(i/games2Train * 100,2)}%')
 
-print("I WANT TO PLAY A GAME")
-i = input("ARE U READY MOTHERFUCKER? ")
-if i == 'y':
-    runTheGame()
+while True:
+    print("I WANT TO PLAY A GAME")
+    i = input("ARE U READY MOTHERFUCKER? ")
+    if i == 'y':
+        runTheGame()
