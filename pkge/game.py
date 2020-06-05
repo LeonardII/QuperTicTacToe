@@ -1,4 +1,4 @@
-from superior import ai_move
+
 
 # global constants
 player1 = "X"
@@ -137,6 +137,7 @@ def main():
             move = human_move(board, player2)
             board[move] = player2
         else:
+            import superior
             move = ai_move(board, player1)
             board[move] = player1
             display_board(board)
