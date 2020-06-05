@@ -1,2 +1,2 @@
 def ai_move(board,player):
-    pass
+    return 1

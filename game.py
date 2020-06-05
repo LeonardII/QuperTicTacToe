@@ -1,5 +1,4 @@
-import superior.py
-
+from superior import ai_move
 
 # global constants
 player1 = "X"
@@ -140,9 +139,11 @@ def main():
         else:
             move = ai_move(board, player1)
             board[move] = player1
-        display_board(board)
+            display_board(board)
+        
         turn = next_turn(turn)
 
+    display_board(board)
     the_winner = winner(board)
     print("winner: ", the_winner)
 
